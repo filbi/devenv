@@ -4,6 +4,7 @@ syntax on
 "Gentoo defaults
 "set backspace=indent,eol,start
 "set ruler
+filetype plugin on
 
 "utf-8 rocks
 set encoding=utf-8
@@ -25,8 +26,7 @@ set expandtab
 set shiftwidth=4
 set number
 set list
-set lcs=tab:>-,trail:+,extends:>
-
+set lcs=tab:▸\ ,trail:+,extends:>
 
 "mappings
 map <space> <c-f>
@@ -144,11 +144,17 @@ set statusline+=%<%P                         " datei position
 "set guioptions-=m
 "set guioptions+=M
 "set guiheadroom=0            "the ratpoison option
-if &term =~ "screen"
-    set t_ts=_
-    set t_fs=\
+
+if $TMUX == ""
+    if &term =~ "screen"
+        " set title in screen hardstatus line (see manpage)
+        set t_ts=_
+        set t_fs=\
+    endif
 endif
-if &term =~ "tmux"
-    set t_ts=]2;
-    set t_fs=\
-endif
+
+" cool way to change cursor color depending on insert/non-insert mode
+"if &term =~ "xterm-256color"
+"let &t_SI = "\<Esc>]12;purple\x7"
+"let &t_EI = "\<Esc>]12;blue\x7"
+"endif
