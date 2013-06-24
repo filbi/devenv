@@ -95,6 +95,9 @@ if $TMUX == ""
         set t_ts=_
         set t_fs=\
     endif
+else
+        set t_ts=]2;
+        set t_fs=\\
 endif
 
 " cool way to change cursor color depending on insert/non-insert mode
