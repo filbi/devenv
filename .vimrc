@@ -61,10 +61,6 @@ autocmd FileType c,cpp,slang set cindent
 autocmd FileType c,cpp,python set colorcolumn=81
 autocmd FileType make set noexpandtab shiftwidth=8
 
-ab #d #define
-ab #i #include
-ab $d $\displaystyle
-
 "vim completion options
 set completeopt=longest,menu,preview
 set wildmode=list:longest
