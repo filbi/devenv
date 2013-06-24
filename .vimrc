@@ -64,17 +64,6 @@ autocmd FileType make set noexpandtab shiftwidth=8
 "vim completion options
 set completeopt=longest,menu,preview
 set wildmode=list:longest
-function! CleverTab()
-    if strpart(getline('.'), 0, col('.')-1) =~ '^\s*$'
-        return "\<Tab>"
-    elseif pumvisible()
-        return "\<C-E>\<C-N>"
-    else
-        return "\<C-N>"
-endfunction
-"inoremap <Tab> <C-R>=CleverTab()<CR>
-"inoremap <C-N> <C-R>=pumvisible() ? "\<lt>C-X>\<lt>C-N>" : "\<lt>C-N>"<CR>
-"inoremap <Down> <C-R>=pumvisible() ? "\<lt>C-N>" : "\<lt>Down>"<CR>
 
 "latex-suite dependency
 set grepprg=grep\ -nH\ 
