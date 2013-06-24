@@ -5,6 +5,7 @@ colorscheme fgv
 "Gentoo defaults
 "set backspace=indent,eol,start
 "set ruler
+set showcmd " Show (partial) command in status line.
 filetype plugin indent on "is also Taglist dependency
 
 "utf-8 rocks
@@ -14,6 +15,7 @@ set termencoding=utf-8
 
 "some movement options
 set nostartofline
+set scrolloff=5 "don't use the last line
 
 "Some devel options
 set smartindent
@@ -54,8 +56,6 @@ set gdefault
 "map <C-K> <C-W>k<C-W>_
 set wmh =0
 
-set showcmd        " Show (partial) command in status line.
-
 "some default options
 autocmd FileType c,cpp,slang set cindent
 autocmd FileType c,cpp,python set colorcolumn=81
@@ -69,21 +69,18 @@ set wildmode=list:longest
 set grepprg=grep\ -nH\ 
 let g:tex_flavor='latex'
 
-"don't use the last line
-set scrolloff=5
-
 "statuszeile
-set laststatus=2							" statusline: always
+set laststatus=2 " statusline: always
 set statusline=
-set statusline+=%-3.3n\                      " buffer nummer
-set statusline+=%f\                          " dateiname
-set statusline+=%y 							" dateityp
+set statusline+=%-3.3n\                     " buffer nummer
+set statusline+=%f\                         " dateiname
+set statusline+=%y                          " dateityp
 set statusline+=[%{&fileformat}][%{&fileencoding}]
-set statusline+=%m%r%w                     " status flags
-set statusline+=%=                           " folgendes rechts
-set statusline+=0x%-8B                       " hex-wert des zeichens
-set statusline+=%-14(%l/%L,%c%)               " zeile, zeichen
-set statusline+=%<%P                         " datei position
+set statusline+=%m%r%w                      " status flags
+set statusline+=%=                          " folgendes rechts
+set statusline+=0x%-8B                      " hex-wert des zeichens
+set statusline+=%-14(%l/%L,%c%)             " zeile, zeichen
+set statusline+=%<%P                        " datei position
 
 "GUI OPTIONS""""""""""""""""""""""""
 "set guioptions-=t
