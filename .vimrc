@@ -32,10 +32,6 @@ set hlsearch
 "mappings
 map <space> <c-f>
 set pastetoggle=<F7>
-map <F8> :set spell!<CR>
-imap <F8> <ESC>:set spell!<CR>a
-map <f9> <c-]>		"go to def
-map <f10> :set laststatus=2<CR>		" display statusline
 map <silent> <f12> :Tlist<CR>
 imap <silent> <f12> <esc>:Tlist<CR>a
 "map <F4> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -o ~/.tags/cpptags $(pwd)<CR>
