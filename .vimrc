@@ -56,9 +56,6 @@ set wmh =0
 
 set showcmd        " Show (partial) command in status line.
 
-"filbert magic enter key
-"imap <ENTER> <ESC>o
-
 "some default options
 autocmd FileType c,cpp,slang set cindent
 autocmd FileType c,cpp,python set colorcolumn=81
