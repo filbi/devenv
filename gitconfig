@@ -10,3 +10,7 @@
 	whitespace = red reverse
 [difftool]
 	prompt = false
+[color]
+	status = auto
+	diff = auto
+	branch = auto
