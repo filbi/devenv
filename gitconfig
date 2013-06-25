@@ -1,0 +1,12 @@
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[diff]
+	wordRegex = .
+	tool = vimdiff
+[color "diff"]
+	commit = magenta
+	whitespace = red reverse
+[difftool]
+	prompt = false
