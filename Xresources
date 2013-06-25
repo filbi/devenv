@@ -4,9 +4,13 @@ Xft*hinting:   true
 Xft*hintstyle: hintfull
 Xft*rgba:      rgb
 
-XTerm*faceName: Dejavu
+! to find all available fonts:
+! fc-list :fontformat=TrueType -f "%{family}\n" | sort -u | less
+XTerm*faceName: DejaVu Sans Mono
 XTerm*faceSize: 12
-XTerm*background: white
+! to find all available color names:
+! less */X11/rgb.txt (exact path distribution specific)
+XTerm*background: lightgrey
 XTerm*foreground: black
 XTerm*highlightColor: yellow
 XTerm*highlightTextColor: navy
