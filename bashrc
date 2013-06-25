@@ -10,8 +10,12 @@ alias reboot='dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKi
 alias info=myinfo
 myinfo() { unalias info; info --subnode $1 2>/dev/null | less; alias info=myinfo; }
 alias vim="vim -o"
+alias diff="git diff --no-index --color-words"
 PS1="\[\033[00m\]\[\033[01;32m\]\u@\h\[\033[01;34m\] \w $\[\033[00m\] "
 INPUTRC="$HOME/.config/confrepo/inputrc"
+export EDITOR=/usr/bin/vim
+HISTSIZE=10000
+HISTIGNORE="&:ls:[bf]g:exit"
 export LESS='-R -M --shift 5'
 case ${TERM} in
     xterm-256color)
@@ -31,3 +35,22 @@ case ${TERM} in
         PROMPT_COMMAND='echo -ne "\033_${PWD/$HOME/~}\033\\"';
         ;;
 esac
+
+function gg {
+    ifs=$IFS
+    IFS=$(echo -en "\n\b")
+    local lines=($(git grep -n $@))
+    IFS=$ifs
+    local len=${#lines[@]}
+    [ $len -eq 0 ] && return
+    for i in $(seq 0 $((len - 1))); do
+        echo "[$i] ${lines[$i]}" | grep $@
+    done
+
+    echo -n "Select which file to open [0]: "
+    read choice
+    echo $choice | grep -qE '[[:alpha:]]+' && return
+    [ -z $choice ] && choice=0
+    [ $choice -ge 0 -a $choice -lt $len ] && \
+        $EDITOR "$(echo ${lines[$choice]} | sed -r "s/^(.*):[[:digit:]].*/\1/")"
+}
