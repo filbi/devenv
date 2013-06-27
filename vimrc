@@ -1,5 +1,6 @@
 "Fuck the standard vi options
 set nocompatible
+set modelines=0
 syntax on
 colorscheme fgv
 "Gentoo defaults
@@ -28,7 +29,10 @@ set list
 set lcs=tab:▸\ ,trail:+,extends:>
 set showbreak=↪
 set textwidth=80
-set hlsearch
+set cursorline
+" only highlight line number
+highlight! link CursorLine Normal
+"set relativenumber
 "set diffopt=horizontal
 
 "mappings
@@ -36,6 +40,9 @@ map <space> <c-f>
 set pastetoggle=<F7>
 map <silent> <f12> :Tlist<CR>
 imap <silent> <f12> <esc>:Tlist<CR>a
+" do not skip wrapped lines
+nnoremap j gj
+nnoremap k gk
 "map <F4> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -o ~/.tags/cpptags $(pwd)<CR>
 "map <F5> :!ctags -R --python-kinds=-i  -o ~/.tags/pytags $(pwd)<CR>
 
@@ -50,6 +57,10 @@ set ignorecase
 set smartcase
 set wrapscan
 set gdefault
+set hlsearch
+noremap <silent> <leader><space> :nohlsearch<CR>
+"dont move cursor to next match when *
+nnoremap * *N
 
 "Split Window Options
 "map <C-J> <C-W>j<C-W>_
@@ -58,16 +69,16 @@ set wmh =0
 
 "some default options
 autocmd FileType c,cpp,slang set cindent
-autocmd FileType c,cpp,python set colorcolumn=81
+autocmd FileType c,cpp,python,sh set colorcolumn=81
 autocmd FileType make set noexpandtab shiftwidth=8
 
 "vim completion options
 set completeopt=longest,menu,preview
 set wildmode=list:longest
+set wildignore+=*.o,*.obj,.git,*.swp,*.bak,*.pyc
 
 "latex-suite dependency
 set grepprg=grep\ -nH\ 
-let g:tex_flavor='latex'
 
 "statuszeile
 set laststatus=2 " statusline: always
@@ -99,6 +110,10 @@ else
         set t_ts=]2;
         set t_fs=\\
 endif
+
+" plugin options
+let g:is_bash=1
+let g:tex_flavor='latex'
 
 " cool way to change cursor color depending on insert/non-insert mode
 "if &term =~ "xterm-256color"
