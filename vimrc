@@ -67,10 +67,9 @@ nnoremap * *N
 "map <C-K> <C-W>k<C-W>_
 set wmh =0
 
-"some default options
-autocmd FileType c,cpp,slang set cindent
-autocmd FileType c,cpp,python,sh set colorcolumn=81
-autocmd FileType make set noexpandtab shiftwidth=8
+autocmd FileType c,cpp,slang setlocal cindent
+autocmd FileType c,cpp,python,sh setlocal colorcolumn=81
+autocmd FileType make setlocal noexpandtab shiftwidth=8
 
 "vim completion options
 set completeopt=longest,menu,preview
