@@ -11,7 +11,7 @@ alias info=myinfo
 myinfo() { unalias info; info --subnode $1 2>/dev/null | less; alias info=myinfo; }
 alias vim="vim -o"
 alias diff="git diff --no-index --color-words"
-PS1="\[\033[00m\]\[\033[01;32m\]\u@\h\[\033[01;34m\] \w $\[\033[00m\] "
+PS1="\[\033[00m\]\[\033[01;34m\]\w $\[\033[00m\] "
 INPUTRC="$HOME/.config/confrepo/inputrc"
 export EDITOR=/usr/bin/vim
 HISTSIZE=10000
@@ -28,11 +28,10 @@ case ${TERM} in
         export SCREENRC="$HOME/.config/confrepo/screenrc_linux"
         ;;
     screen*)
-        if [[ -z $TMUX ]] ; then
-            PS1='\[\033[00m\]\[\033[01;32m\]\u@\h\[\033[01;34m\]\[\033k\033\\\] \w $\[\033[00m\] '
+        if echo $TERMCAP | grep -q "screen"; then
+            PS1='\[\033[00m\]\[\033[01;34m\]\[\033k\033\\\]\w $\[\033[00m\] '
         fi
-        #PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"';
-        PROMPT_COMMAND='echo -ne "\033_${PWD/$HOME/~}\033\\"';
+        PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}\033\\"';
         ;;
 esac
 
