@@ -1,0 +1,9 @@
+defutf8 on
+vbell off
+altscreen on
+shelltitle '$ |bash'
+hardstatus lastline
+hardstatus string '%{= gW} %h %t [%w] %= %c'
+termcapinfo xterm* 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+termcapinfo xterm* ti@:te@
+markkeys " =v:y=V"

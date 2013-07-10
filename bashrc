@@ -22,10 +22,10 @@ case ${TERM} in
         alias screen='screen -T screen-256color'
         ;&
     xterm*)
-        export SCREENRC="$HOME/.config/screen/screenrc_xterm"
+        export SCREENRC="$HOME/.config/confrepo/screenrc_xterm"
         ;;
     linux)
-        export SCREENRC="$HOME/.config/screen/screenrc_linux"
+        export SCREENRC="$HOME/.config/confrepo/screenrc_linux"
         ;;
     screen*)
         if [[ -z $TMUX ]] ; then
