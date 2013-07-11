@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# implicit assumption that the rc files are in HOME
+
+RC_REPO=.${PWD#$HOME}
+DOT_FILES="$HOME/.vimrc
+$HOME/.bashrc
+$HOME/.Xresources
+$HOME/.tmux.conf
+$HOME/.gitconfig"
+
+while read path; do
+    [ -e $path ] && echo Skipping $path && continue
+    name=$(basename $path)
+    cd $(dirname $path)
+    ln -s $RC_REPO/${name#.} $name
+done <<< "$DOT_FILES"
