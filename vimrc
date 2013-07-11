@@ -1,11 +1,9 @@
-"Fuck the standard vi options
 set nocompatible
 set modelines=0
 syntax on
 colorscheme fgv
-"Gentoo defaults
-"set backspace=indent,eol,start
-"set ruler
+set backspace=start ",indent,eol
+set ruler
 set showcmd " Show (partial) command in status line.
 filetype plugin indent on "is also Taglist dependency
 
@@ -68,7 +66,8 @@ nnoremap * *N
 set wmh =0
 
 autocmd FileType c,cpp,slang setlocal cindent
-autocmd FileType c,cpp,python,sh setlocal colorcolumn=81
+autocmd FileType c,cpp,python,sh,gitcommit setlocal colorcolumn=81
+autocmd FileType gitcommit setlocal spell
 autocmd FileType make setlocal noexpandtab shiftwidth=8
 
 "vim completion options
