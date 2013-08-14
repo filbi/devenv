@@ -5,7 +5,7 @@ colorscheme fgv
 set backspace=start ",indent,eol
 set ruler
 set showcmd " Show (partial) command in status line.
-filetype plugin indent on "is also Taglist dependency
+filetype plugin indent on
 
 "utf-8 rocks
 set encoding=utf-8
@@ -36,13 +36,9 @@ highlight! link CursorLine Normal
 "mappings
 map <space> <c-f>
 set pastetoggle=<F7>
-map <silent> <f12> :Tlist<CR>
-imap <silent> <f12> <esc>:Tlist<CR>a
 " do not skip wrapped lines
 nnoremap j gj
 nnoremap k gk
-"map <F4> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -o ~/.tags/cpptags $(pwd)<CR>
-"map <F5> :!ctags -R --python-kinds=-i  -o ~/.tags/pytags $(pwd)<CR>
 
 "spell
 setlocal spell spelllang=en
@@ -69,6 +65,7 @@ autocmd FileType c,cpp,slang setlocal cindent
 autocmd FileType c,cpp,python,sh,gitcommit setlocal colorcolumn=81
 autocmd FileType gitcommit setlocal spell
 autocmd FileType make setlocal noexpandtab shiftwidth=8
+autocmd FileType qf nmap <buffer> <cr> <cr>:lcl<cr>
 
 "vim completion options
 set completeopt=longest,menu,preview
@@ -82,7 +79,7 @@ set grepprg=grep\ -nH\
 set laststatus=2 " statusline: always
 set statusline=
 set statusline+=%-3.3n\                     " buffer nummer
-set statusline+=%f\                         " dateiname
+set statusline+=%t\                         " file name
 set statusline+=%y                          " dateityp
 set statusline+=[%{&fileformat}][%{&fileencoding}]
 set statusline+=%m%r%w                      " status flags
