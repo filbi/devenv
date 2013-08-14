@@ -95,15 +95,19 @@ set statusline+=%<%P                        " datei position
 "set guioptions+=M
 "set guiheadroom=0            "the ratpoison option
 
-if $TMUX == ""
-    if &term =~ "screen"
+set titlestring=VIM\ %t
+set iconstring=VIM\ %t
+if $TERMCAP =~ "screen"
+    if $TMUX == ""
         " set title in screen hardstatus line (see manpage)
         set t_ts=_
         set t_fs=\
-    endif
-else
+    else
         set t_ts=]2;
         set t_fs=\\
+        set notitle
+        set noicon
+    endif
 endif
 
 " plugin options
