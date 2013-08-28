@@ -3,6 +3,7 @@ set modelines=0
 syntax on
 colorscheme fgv
 set backspace=start ",indent,eol
+set nojoinspaces
 set ruler
 set showcmd " Show (partial) command in status line.
 filetype plugin indent on
@@ -40,10 +41,6 @@ set pastetoggle=<F7>
 nnoremap j gj
 nnoremap k gk
 
-"spell
-setlocal spell spelllang=en
-set spell!
-
 "Some search options
 set showmatch
 set incsearch
@@ -60,6 +57,7 @@ nnoremap * *N
 "map <C-J> <C-W>j<C-W>_
 "map <C-K> <C-W>k<C-W>_
 set wmh =0
+set noequalalways
 
 autocmd FileType c,cpp,slang setlocal cindent
 autocmd FileType c,cpp,python,sh,gitcommit setlocal colorcolumn=81
@@ -71,6 +69,7 @@ autocmd FileType qf nmap <buffer> <cr> <cr>:lcl<cr>
 set completeopt=longest,menu,preview
 set wildmode=list:longest
 set wildignore+=*.o,*.obj,.git,*.swp,*.bak,*.pyc
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 "latex-suite dependency
 set grepprg=grep\ -nH\ 
