@@ -4,6 +4,7 @@ syntax on
 colorscheme fgv
 set backspace=start ",indent,eol
 set nojoinspaces
+set directory-=.
 set ruler
 set showcmd " Show (partial) command in status line.
 filetype plugin indent on
@@ -18,7 +19,6 @@ set nostartofline
 set scrolloff=5 "don't use the last line
 
 "Some devel options
-set smartindent
 set tabstop=4
 set softtabstop=4
 set expandtab
@@ -51,7 +51,8 @@ set gdefault
 set hlsearch
 noremap <silent> <leader><space> :nohlsearch<CR>
 "dont move cursor to next match when *
-nnoremap * *N
+nnoremap <silent> * /\C\<<C-R>=expand('<cword>')<CR>\><CR>N
+nnoremap <silent> # ?\C\<<C-R>=expand('<cword>')<CR>\><CR>
 
 "Split Window Options
 "map <C-J> <C-W>j<C-W>_
@@ -59,8 +60,11 @@ nnoremap * *N
 set wmh =0
 set noequalalways
 
-autocmd FileType c,cpp,slang setlocal cindent
+autocmd FileType cpp setlocal matchpairs+=<:>
+autocmd FileType python setlocal backspace=start,indent
 autocmd FileType c,cpp,python,sh,gitcommit setlocal colorcolumn=81
+autocmd FileType c,cpp,python,sh nnoremap p ]p
+autocmd FileType c,cpp,python,sh nnoremap P ]P
 autocmd FileType gitcommit setlocal spell
 autocmd FileType make setlocal noexpandtab shiftwidth=8
 autocmd FileType qf nmap <buffer> <cr> <cr>:lcl<cr>
