@@ -14,8 +14,12 @@ alias diff="git diff --no-index --color-words"
 PS1="\[\033[00m\]\[\033[01;34m\]\w $\[\033[00m\] "
 INPUTRC="$HOME/.config/confrepo/inputrc"
 export EDITOR=/usr/bin/vim
-HISTSIZE=10000
+HISTCONTROL=ignoreboth:erasedups
+HISTSIZE=100000
+HISTFILE="$HOME/.local/var/bash_history"
+HISTFILESIZE=100000
 HISTIGNORE="&:ls:[bf]g:exit"
+shopt -s histappend
 export LESS='-R -M --shift 5'
 case ${TERM} in
     xterm-256color)
