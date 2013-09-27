@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir -p ~/.local/var/
 # implicit assumption that the rc files are in HOME
 
 RC_REPO=.${PWD#$HOME}
