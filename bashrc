@@ -40,20 +40,21 @@ case ${TERM} in
 esac
 
 function gg {
-    ifs=$IFS
-    IFS=$(echo -en "\n\b")
+    local IFS=$(echo -en "\n\b")
     local lines=($(git grep -n $@))
-    IFS=$ifs
+    unset IFS
     local len=${#lines[@]}
     [ $len -eq 0 ] && return
-    for i in $(seq 0 $((len - 1))); do
-        echo "[$i] ${lines[$i]}" | grep $@
+    for i in ${!lines[@]}; do
+        echo "[$i] ${lines[$i]}" | grep "$@"
     done
 
     echo -n "Select which file to open [0]: "
     read choice
-    echo $choice | grep -qE '[[:alpha:]]+' && return
+    echo "$choice" | grep -qE '[^[:digit:]]+' && return
     [ -z $choice ] && choice=0
-    [ $choice -ge 0 -a $choice -lt $len ] && \
-        $EDITOR "$(echo ${lines[$choice]} | sed -r "s/^(.*):[[:digit:]].*/\1/")"
+    [ $choice -lt 0 -o $choice -ge $len ] && return
+    local filename=$(echo ${lines[$choice]} | cut -d: -f1)
+    local line_number=$(echo ${lines[$choice]} | cut -d: -f2)
+    vim +$line_number "+let @/ = '\C$@'" "+setlocal hlsearch" "$filename"
 }
