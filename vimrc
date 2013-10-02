@@ -50,8 +50,8 @@ set wrapscan
 set gdefault
 set hlsearch
 noremap <silent> <leader><space> :nohlsearch<CR>
-"dont move cursor to next match when *
-nnoremap <silent> * /\C\<<C-R>=expand('<cword>')<CR>\><CR>N
+"dont move cursor to next match when * and always search case-sensitive
+nnoremap <silent> * :let @/ = '\C\<<C-R>=expand('<cword>')<CR>\>'\| setl hls<CR>
 nnoremap <silent> # ?\C\<<C-R>=expand('<cword>')<CR>\><CR>
 
 "Split Window Options
@@ -65,6 +65,7 @@ autocmd FileType python setlocal backspace=start,indent
 autocmd FileType c,cpp,python,sh,gitcommit setlocal colorcolumn=81
 autocmd FileType c,cpp,python,sh nnoremap p ]p
 autocmd FileType c,cpp,python,sh nnoremap P ]P
+autocmd FileType c,cpp,python,sh setlocal formatoptions+=j
 autocmd FileType gitcommit setlocal spell
 autocmd FileType make setlocal noexpandtab shiftwidth=8
 autocmd FileType qf nmap <buffer> <cr> <cr>:lcl<cr>
