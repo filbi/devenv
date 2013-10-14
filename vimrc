@@ -7,6 +7,7 @@ set nojoinspaces
 set directory-=.
 set ruler
 set showcmd " Show (partial) command in status line.
+set switchbuf=useopen,usetab,split
 filetype plugin indent on
 
 "utf-8 rocks
@@ -28,6 +29,7 @@ set list
 set lcs=tab:▸\ ,trail:+,extends:>
 set showbreak=↪
 set textwidth=80
+set cinoptions+=g0,N-s,t0,(0,u0,Ws,k2s
 set cursorline
 " only highlight line number
 highlight! link CursorLine Normal
@@ -61,11 +63,10 @@ set wmh =0
 set noequalalways
 
 autocmd FileType cpp setlocal matchpairs+=<:>
-autocmd FileType python setlocal backspace=start,indent
-autocmd FileType c,cpp,python,sh,gitcommit setlocal colorcolumn=81
+autocmd FileType c,cpp,python,sh,gitcommit setlocal colorcolumn=+1
 autocmd FileType c,cpp,python,sh nnoremap p ]p
 autocmd FileType c,cpp,python,sh nnoremap P ]P
-autocmd FileType c,cpp,python,sh setlocal formatoptions+=j
+autocmd FileType c,cpp,python,sh setlocal formatoptions+=jro
 autocmd FileType gitcommit setlocal spell
 autocmd FileType make setlocal noexpandtab shiftwidth=8
 autocmd FileType qf nmap <buffer> <cr> <cr>:lcl<cr>
@@ -117,6 +118,8 @@ endif
 " plugin options
 let g:is_bash=1
 let g:tex_flavor='latex'
+let g:pyindent_open_paren = '&sw'
+let g:pyindent_continue = '&sw'
 
 " cool way to change cursor color depending on insert/non-insert mode
 "if &term =~ "xterm-256color"
