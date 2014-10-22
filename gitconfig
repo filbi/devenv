@@ -6,6 +6,7 @@
 [diff]
 	wordRegex = .
 	tool = vimdiff
+	renames = copy
 [color "diff"]
 	commit = magenta
 	whitespace = red reverse
@@ -19,3 +20,5 @@
 	default = upstream
 [branch]
 	autosetuprebase = always
+[apply]
+	whitespace = warn
