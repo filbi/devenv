@@ -14,6 +14,8 @@ alias diff="git diff --no-index --color-words"
 PS1="\[\033[00m\]\[\033[01;34m\]\w $\[\033[00m\] "
 INPUTRC="$HOME/.config/confrepo/inputrc"
 export EDITOR=/usr/bin/vim
+export GOPATH=$HOME/go
+PATH="$PATH:$GOPATH/bin"
 HISTCONTROL=ignoreboth:erasedups
 HISTSIZE=100000
 HISTFILE="$HOME/.local/var/bash_history"
@@ -21,6 +23,7 @@ HISTFILESIZE=100000
 HISTIGNORE="&:ls:[bf]g:exit"
 shopt -s histappend
 export LESS='-R -M --shift 5'
+export LC_TIME="de_CH.UTF-8"
 case ${TERM} in
     xterm-256color)
         alias screen='screen -T screen-256color'
