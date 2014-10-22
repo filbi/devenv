@@ -69,6 +69,7 @@ autocmd FileType c,cpp,python,sh nnoremap P ]P
 autocmd FileType c,cpp,python,sh setlocal formatoptions+=jro
 autocmd FileType gitcommit setlocal spell
 autocmd FileType make setlocal noexpandtab shiftwidth=8
+autocmd FileType go setlocal noexpandtab shiftwidth=4 nolist
 autocmd FileType qf nmap <buffer> <cr> <cr>:lcl<cr>
 
 "vim completion options
