@@ -121,6 +121,13 @@ let g:is_bash=1
 let g:tex_flavor='latex'
 let g:pyindent_open_paren = '&sw'
 let g:pyindent_continue = '&sw'
+let g:UltiSnipsEditSplit = "horizontal"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:CommandTAcceptSelectionMap = '<C-v>'
+let g:CommandTAcceptSelectionVSplitMap = '<CR>'
+let g:CommandTFileScanner = 'git'
+let g:ycm_key_list_select_completion = ['<C-n>']
 
 " cool way to change cursor color depending on insert/non-insert mode
 "if &term =~ "xterm-256color"
