@@ -1,18 +1,19 @@
 #!/bin/bash
 
 mkdir -p ~/.local/var/
-# implicit assumption that the rc files are in HOME
+mkdir -p ~/.config/git/
+mkdir -p ~/.vim/
 
-RC_REPO=.${PWD#$HOME}
-DOT_FILES="$HOME/.vimrc
-$HOME/.bashrc
-$HOME/.Xresources
-$HOME/.tmux.conf
-$HOME/.gitconfig"
-
-while read path; do
+declare -A DOT_FILES=(
+    ["$HOME/.vim/vimrc"]=vimrc
+    ["$HOME/.bashrc"]=bashrc
+    ["$HOME/.Xresources"]=Xresources
+    ["$HOME/.tmux.conf"]=tmux.conf
+    ["$HOME/.config/git/config"]=gitconfig
+)
+RC_REPO=$PWD
+for path in "${!DOT_FILES[@]}"; do
     [ -e $path ] && echo Skipping $path && continue
-    name=$(basename $path)
     cd $(dirname $path)
-    ln -s $RC_REPO/${name#.} $name
-done <<< "$DOT_FILES"
+    ln --relative -s $RC_REPO/${DOT_FILES[$path]} $(basename $path)
+done
