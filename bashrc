@@ -1,7 +1,9 @@
 umask 027
 set -o vi
+alias pacman='pacman --color=auto'
 alias emerge='emerge --color y'
 alias ls='ls --color=always --group-directories-first'
+eval $(dircolors)
 alias grep='grep --colour=always'
 alias info=myinfo
 myinfo() { unalias info; info --subnode $1 2>/dev/null | less; alias info=myinfo; }
