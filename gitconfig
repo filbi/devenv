@@ -40,3 +40,12 @@
 	verbose = true
 [init]
 	defaultBranch = master
+[color "diff-highlight"]
+	oldHighlight = red bold 52
+	newHighlight = green bold 22
+[tig]
+	tab-size = 4
+	diff-highlight = /usr/share/git/diff-highlight/diff-highlight
+	show-untracked = no
+	refresh-mode = periodic
+	refresh-interval = 1
