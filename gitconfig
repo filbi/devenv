@@ -26,3 +26,5 @@
 	f = commit --amend --reuse-message=HEAD
 	b = "!f() { git checkout master@{u} -b $1 && git pull --rebase;}; f"
 	r = "!f() { git rebase -i $(git merge-base HEAD @{u});}; f"
+[tig]
+	tab-size = 4
