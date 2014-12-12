@@ -57,6 +57,7 @@ noremap <silent> <leader><space> :nohlsearch<CR>
 "dont move cursor to next match when * and always search case-sensitive
 nnoremap <silent> * :let @/ = '\C\<<C-R>=expand('<cword>')<CR>\>'\| setl hls<CR>
 nnoremap <silent> # ?\C\<<C-R>=expand('<cword>')<CR>\><CR>
+nmap <leader>g :let @/='\C\<<C-R><C-W>\>' \| set hls \| silent Ggrep! -w "<cword>" \| tabedit \| copen<CR><C-W>L
 
 "Split Window Options
 "map <C-J> <C-W>j<C-W>_
@@ -69,6 +70,7 @@ autocmd FileType c,cpp,python,sh,gitcommit setlocal colorcolumn=+1
 autocmd FileType c,cpp,python,sh nnoremap p ]p
 autocmd FileType c,cpp,python,sh nnoremap P ]P
 autocmd FileType c,cpp,python,sh setlocal formatoptions+=jro
+autocmd FileType c,cpp map gd :YcmCompleter GoToImprecise<CR>
 autocmd FileType gitcommit setlocal spell
 autocmd FileType make setlocal noexpandtab shiftwidth=8
 autocmd FileType go setlocal noexpandtab shiftwidth=4 nolist
