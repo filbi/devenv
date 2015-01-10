@@ -13,6 +13,7 @@ prompt=$([ $UID -eq 0 ] && echo ↯ || echo ▶)
 PS1="\[\033[00m\]\[\033[01;34m\]\w \[\033[01;31m\]$prompt\[\033[00m\] "
 INPUTRC="$HOME/.config/confrepo/inputrc"
 export EDITOR=/usr/bin/vim
+export MANPAGER="bash -c \"vim -R +'set ft=man ts=8 nomod nolist nonu noma' +'map q ZZ'</dev/tty <(col -b)\""
 export GOPATH=$HOME/go
 PATH="$PATH:$GOPATH/bin"
 HISTCONTROL=ignoreboth:erasedups
@@ -21,7 +22,7 @@ HISTFILE="$HOME/.local/var/bash_history"
 HISTFILESIZE=100000
 HISTIGNORE="&:ls:[bf]g:exit"
 shopt -s histappend
-export LESS='-R -M --shift 5'
+export LESS='-R -M -x1,5 --shift 10 --silent'
 export LC_TIME="de_CH.UTF-8"
 case ${TERM} in
     xterm-256color)
