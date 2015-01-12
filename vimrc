@@ -44,6 +44,7 @@ set viminfofile=$HOME/.local/var/viminfo
 
 "mappings
 inoremap kj <ESC>
+inoremap <ESC> <NOP>
 cnoremap kj <C-c>
 map <space> <c-f>
 set pastetoggle=<F7>

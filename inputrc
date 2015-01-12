@@ -15,3 +15,4 @@ set vi-ins-mode-string ""
 "kj": vi-movement-mode
 "\e[Z": complete
 "\C-e": forward-search-history
+"\e": self-insert
