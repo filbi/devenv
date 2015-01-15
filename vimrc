@@ -37,6 +37,8 @@ highlight! link CursorLine Normal
 "set diffopt=horizontal
 
 "mappings
+inoremap kj <ESC>
+cnoremap kj <C-c>
 map <space> <c-f>
 set pastetoggle=<F7>
 " do not skip wrapped lines
