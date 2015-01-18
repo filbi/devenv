@@ -30,6 +30,7 @@ XTerm*multiScroll: true
 XTerm*fastScroll: true
 XTerm*utf8: true
 XTerm*termName: xterm-256color
+XTerm*popOnBell: true
 
 URxvt*font: xft:MonoSpace:size=12
 URxvt*scrollBar: false
