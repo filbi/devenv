@@ -8,6 +8,7 @@ set directory-=.
 set ruler
 set showcmd " Show (partial) command in status line.
 set switchbuf=useopen,usetab,split
+set clipboard-=autoselect
 filetype plugin indent on
 
 "utf-8 rocks
