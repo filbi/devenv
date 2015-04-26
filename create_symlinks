@@ -10,6 +10,7 @@ declare -A DOT_FILES=(
     ["$HOME/.Xresources"]=Xresources
     ["$HOME/.tmux.conf"]=tmux.conf
     ["$HOME/.config/git/config"]=gitconfig
+    ["$HOME/.toprc"]=toprc
 )
 RC_REPO=$PWD
 for path in "${!DOT_FILES[@]}"; do
