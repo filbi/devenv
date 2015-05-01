@@ -116,6 +116,16 @@ if $TMUX != ""
     set noicon
 endif
 
+augroup YCM
+    autocmd!
+    autocmd FileType rust let b:ycm_hover = {
+        \ 'command': 'GetType',
+        \ 'syntax': &filetype
+        \ }
+    autocmd BufWrite,InsertLeave *.rs YcmCompleter Format
+    autocmd FileType rust map gd :YcmCompleter GoToDefinition<CR>
+augroup END
+
 " plugin options
 let g:is_bash=1
 let g:tex_flavor='latex'
@@ -129,7 +139,31 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:CommandTAcceptSelectionMap = '<C-v>'
 let g:CommandTAcceptSelectionVSplitMap = '<CR>'
 let g:CommandTFileScanner = 'git'
+let g:CommandTMatchWindowReverse = 0
 let g:ycm_key_list_select_completion = ['<C-n>']
+let g:ycm_always_populate_location_list = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_global_ycm_extra_conf = '~/.config/confrepo/ycm_extra_conf.py'
+let g:ale_echo_msg_format = '[%linter%] %s'
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+let g:ale_linters = {'rust': []}
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+    \'bash': ['shfmt'],
+    \'go': ['goimports'],
+    \'html': ['prettier'],
+    \'javascript': ['prettier'],
+    \'json': ['jq'],
+    \'markdown': ['prettier'],
+    \'python': ['black'],
+    \'sh': ['shfmt'],
+    \'vue': ['prettier'],
+    \'xml': ['xmllint'],
+    \'yaml': ['prettier'],
+\}
+let g:ale_json_jq_options = '--indent 4'
+let g:ale_sh_shfmt_options = '--indent 4'
 
 " cool way to change cursor color depending on insert/non-insert mode
 "if &term =~ "xterm-256color"
