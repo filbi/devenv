@@ -31,6 +31,7 @@ set lcs=tab:▸\ ,trail:+,extends:>
 set showbreak=↪
 set textwidth=80
 set cinoptions+=g0,N-s,t0,(0,u0,Ws,k2s
+set formatoptions+=jro
 set cursorline
 " only highlight line number
 highlight! link CursorLine Normal
@@ -68,11 +69,10 @@ set noequalalways
 
 autocmd FileType cpp setlocal matchpairs+=<:>
 autocmd FileType c,cpp,python,sh,gitcommit setlocal colorcolumn=+1
-autocmd FileType c,cpp,python,sh nnoremap p ]p
-autocmd FileType c,cpp,python,sh nnoremap P ]P
-autocmd FileType c,cpp,python,sh setlocal formatoptions+=jro
+autocmd FileType c,cpp,python,sh,go nnoremap p ]p
+autocmd FileType c,cpp,python,sh,go nnoremap P ]P
 autocmd FileType c,cpp map gd :YcmCompleter GoToImprecise<CR>
-autocmd FileType gitcommit setlocal spell
+autocmd FileType gitcommit setlocal spell textwidth=68
 autocmd FileType make setlocal noexpandtab shiftwidth=8
 autocmd FileType go setlocal noexpandtab shiftwidth=4 nolist
 autocmd FileType qf nmap <buffer> <cr> <cr>:lcl<cr>
