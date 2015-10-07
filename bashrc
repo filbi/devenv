@@ -4,7 +4,7 @@ alias pacman='pacman --color=auto'
 alias emerge='emerge --color y'
 alias ls='ls --color=always --group-directories-first'
 eval $(dircolors)
-alias grep='grep --colour=always'
+alias grep='grep --colour=auto'
 alias info=myinfo
 myinfo() { unalias info; info --subnode $1 2>/dev/null | less; alias info=myinfo; }
 alias vim="vim -o"
