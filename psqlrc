@@ -1,0 +1,10 @@
+\set QUIET 1
+\set COMP_KEYWORD_CASE upper
+\x auto
+\pset null ¤
+\set PROMPT1 '%[%033[1;39m%]%/%R%# %[%033[0m%]'
+\set PROMPT2 '%[%033[1;39m%]%R%# %[%033[0m%]'
+\set HISTFILE ~/.local/var/psql_history
+\set HISTCONTROL ignoredups
+\encoding unicode
+\set QUIET 0

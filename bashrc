@@ -24,6 +24,11 @@ HISTIGNORE="&:ls:[bf]g:exit"
 shopt -s histappend
 export LESS='-R -M -x1,5 --shift 10 --silent'
 export LC_TIME="de_CH.UTF-8"
+
+export PGUSER=postgres
+export PGHOST=localhost
+export PSQLRC=$HOME/.config/confrepo/psqlrc
+
 case ${TERM} in
     xterm-256color)
         alias screen='screen -T screen-256color'
