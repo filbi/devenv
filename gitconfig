@@ -7,6 +7,7 @@
 	wordRegex = .
 	tool = vimdiff
 	renames = copy
+	indentHeuristic = true
 [color "diff"]
 	commit = magenta
 	whitespace = red reverse
@@ -23,8 +24,10 @@
 [apply]
 	whitespace = warn
 [alias]
-	f = commit --amend --reuse-message=HEAD
+	f = commit --amend --no-edit
 	b = "!f() { git checkout master@{u} -b $1 && git pull --rebase;}; f"
 	r = "!f() { git rebase -i $(git merge-base HEAD @{u});}; f"
 [tig]
 	tab-size = 4
+[submodule]
+	fetchJobs = 0
