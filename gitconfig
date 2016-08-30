@@ -7,6 +7,7 @@
 	wordRegex = .
 	tool = vimdiff
 	renames = copy
+	colorMoved = default
 [color "diff"]
 	commit = magenta
 	whitespace = red reverse
@@ -20,9 +21,21 @@
 	default = upstream
 [branch]
 	autosetuprebase = always
+	sort = -authordate
 [apply]
 	whitespace = warn
 [alias]
-	f = commit --amend --reuse-message=HEAD
+	f = commit --amend --no-edit
 	b = "!f() { git checkout master@{u} -b $1 && git pull --rebase;}; f"
 	r = "!f() { git rebase -i $(git merge-base HEAD @{u});}; f"
+[submodule]
+	fetchJobs = 0
+[transfer]
+	fsckObjects = true
+[fetch]
+	prune = true
+	parallel = 0
+[commit]
+	verbose = true
+[init]
+	defaultBranch = master
