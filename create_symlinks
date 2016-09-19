@@ -4,6 +4,7 @@ mkdir -p ~/.local/var/
 mkdir -p ~/.config/git/
 mkdir -p ~/.config/procps/
 mkdir -p ~/.vim/
+mkdir -p ~/.ssh/
 
 declare -A DOT_FILES=(
     ["$HOME/.vim/vimrc"]=vimrc
@@ -13,6 +14,7 @@ declare -A DOT_FILES=(
     ["$HOME/.config/procps/toprc"]=toprc
     ["$HOME/.gdbinit"]=gdbinit
     ["$HOME/.sqliterc"]=sqliterc
+    ["$HOME/.ssh/config"]=ssh.config
 )
 RC_REPO=$PWD
 for path in "${!DOT_FILES[@]}"; do
