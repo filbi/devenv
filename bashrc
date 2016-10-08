@@ -43,3 +43,9 @@ function gg {
         break
     done
 }
+
+psql () {
+    local sed_cmd='s/\(^([0-9]\+ rows\?)\|^\(-\[\ RECORD\ [0-9]\+\ \]\)\?[-+]\+\||\)/'
+    sed_cmd+="$(echo -e '\033[0;32m')\1$(echo -e '\033[0m')/g"
+    PAGER="sed '$sed_cmd' | less -FX" command psql --pset=pager=always "$@"
+}
