@@ -2,6 +2,9 @@ set nocompatible
 set modelines=0
 syntax on
 colorscheme fgv
+let &t_8f = "[38;2;%lu;%lu;%lum"
+let &t_8b = "[48;2;%lu;%lu;%lum"
+set termguicolors
 set backspace=start ",indent,eol
 set nojoinspaces
 set directory-=.
