@@ -115,6 +115,10 @@ if $TMUX != ""
     set notitle
     set noicon
 endif
+if &term =~ "tmux"
+    set t_ts=
+    set t_fs=
+endif
 
 augroup YCM
     autocmd!
