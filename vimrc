@@ -120,6 +120,10 @@ if $TERMCAP =~ "screen"
         set noicon
     endif
 endif
+if &term =~ "tmux"
+    set t_ts=
+    set t_fs=
+endif
 
 " plugin options
 let g:is_bash=1
