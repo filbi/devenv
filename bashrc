@@ -9,6 +9,7 @@ alias info=myinfo
 myinfo() { unalias info; info --subnode $1 2>/dev/null | less; alias info=myinfo; }
 alias vim="vim -o"
 alias diff="git diff --no-index --color-words"
+alias wget="wget --hsts-file=$HOME/.local/var/wget-hsts"
 prompt=$([ $UID -eq 0 ] && echo ↯ || echo ▶)
 PS1="\[\033[00m\]\[\033[01;34m\]\w \[\033[01;31m\]$prompt\[\033[00m\] "
 INPUTRC="$HOME/.config/confrepo/inputrc"
@@ -22,6 +23,7 @@ HISTFILESIZE=100000
 HISTIGNORE="&:ls:[bf]g:exit"
 shopt -s histappend
 export LESS='-R -M -x1,5 --shift 10 --silent'
+export LESSHISTFILE="$HOME/.local/var/less_history"
 export LC_TIME="de_CH.UTF-8"
 
 export PGUSER=postgres
