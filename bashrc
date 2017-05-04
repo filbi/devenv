@@ -14,8 +14,7 @@ PS1="\[\033[00m\]\[\033[01;34m\]\w \[\033[01;31m\]$prompt\[\033[00m\] "
 INPUTRC="$HOME/.config/confrepo/inputrc"
 export EDITOR=/usr/bin/vim
 export MANPAGER="bash -c \"vim -R +'set ft=man ts=8 nomod nolist nonu noma' +'map q ZZ'</dev/tty <(col -b)\""
-export GOPATH=$HOME/go
-PATH="$PATH:$GOPATH/bin"
+PATH="$PATH:$HOME/go/bin"
 HISTCONTROL=ignoreboth:erasedups
 HISTSIZE=100000
 HISTFILE="$HOME/.local/var/bash_history"
