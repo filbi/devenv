@@ -36,6 +36,7 @@ set cursorline
 set cursorlineopt=number
 "set relativenumber
 "set diffopt=horizontal
+set viminfofile=$HOME/.local/var/viminfo
 
 "mappings
 inoremap kj <ESC>
