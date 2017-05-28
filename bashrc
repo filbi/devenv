@@ -47,21 +47,12 @@ case ${TERM} in
 esac
 
 function gg {
-    local IFS=$(echo -en "\n\b")
-    local lines=($(git grep -n $@))
-    unset IFS
-    local len=${#lines[@]}
-    [ $len -eq 0 ] && return
-    for i in ${!lines[@]}; do
-        echo "[$i] ${lines[$i]}" | grep "$@"
+    local IFS=$'\n'
+    local PS3="Select which file to open: "
+    select l in $(git grep --color=always -n $@); do
+        [ -z "$l" ] && continue
+        vim "+let @/ = '\C$@'" "+setlocal hlsearch" $(
+            awk -F$'\x1b' '{gsub("\\[m", "+", $3); print $3; print $1}' <<< $l)
+        break
     done
-
-    echo -n "Select which file to open [0]: "
-    read choice
-    echo "$choice" | grep -qE '[^[:digit:]]+' && return
-    [ -z $choice ] && choice=0
-    [ $choice -lt 0 -o $choice -ge $len ] && return
-    local filename=$(echo ${lines[$choice]} | cut -d: -f1)
-    local line_number=$(echo ${lines[$choice]} | cut -d: -f2)
-    vim +$line_number "+let @/ = '\C$@'" "+setlocal hlsearch" "$filename"
 }
