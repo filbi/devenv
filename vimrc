@@ -67,12 +67,13 @@ nmap <leader>g :let @/='\C\<<C-R><C-W>\>' \| set hls \| silent Ggrep! -w "<cword
 set wmh =0
 set noequalalways
 
-autocmd FileType cpp setlocal matchpairs+=<:>
+autocmd FileType cpp,rust setlocal matchpairs+=<:>
 autocmd FileType c,cpp,python,sh,gitcommit setlocal colorcolumn=+1
-autocmd FileType c,cpp,python,sh,go nnoremap p ]p
-autocmd FileType c,cpp,python,sh,go nnoremap P ]P
+autocmd FileType c,cpp,python,sh,go,rust nnoremap p ]p
+autocmd FileType c,cpp,python,sh,go,rust nnoremap P ]P
 autocmd FileType c,cpp map gd :YcmCompleter GoToImprecise<CR>
 autocmd FileType gitcommit setlocal spell textwidth=68
+autocmd FileType markdown setlocal spell textwidth=68 conceallevel=2
 autocmd FileType make setlocal noexpandtab shiftwidth=8
 autocmd FileType go setlocal noexpandtab shiftwidth=4 nolist
 autocmd FileType qf nmap <buffer> <cr> <cr>:lcl<cr>
@@ -120,6 +121,8 @@ let g:is_bash=1
 let g:tex_flavor='latex'
 let g:pyindent_open_paren = '&sw'
 let g:pyindent_continue = '&sw'
+let g:sql_type_default = 'mysql'
+let g:markdown_fenced_languages = ['bash', 'python', 'rust', 'sh', 'javascript', 'typescript', 'json']
 let g:UltiSnipsEditSplit = "horizontal"
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
