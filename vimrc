@@ -130,6 +130,7 @@ let g:is_bash=1
 let g:tex_flavor='latex'
 let g:pyindent_open_paren = '&sw'
 let g:pyindent_continue = '&sw'
+let g:sql_type_default = 'mysql'
 let g:UltiSnipsEditSplit = "horizontal"
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
