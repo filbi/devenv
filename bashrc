@@ -11,7 +11,7 @@ alias vim="vim -o"
 alias diff="git diff --no-index --color-words"
 prompt=$([ $UID -eq 0 ] && echo ↯ || echo ▶)
 PS1="\[\033[00m\]\[\033[01;34m\]\w \[\033[01;31m\]$prompt\[\033[00m\] "
-INPUTRC="$HOME/.config/confrepo/inputrc"
+export INPUTRC="$HOME/.config/confrepo/inputrc"
 export EDITOR=/usr/bin/vim
 export MANPAGER="bash -c \"vim -R +'set ft=man ts=8 nomod nolist nonu noma' +'map q ZZ'</dev/tty <(col -b)\""
 PATH="$PATH:$HOME/go/bin"
