@@ -30,6 +30,8 @@ export PGUSER=postgres
 export PGHOST=localhost
 export PSQLRC=$HOME/.config/confrepo/psqlrc
 
+export PIPENV_VENV_IN_PROJECT=1
+
 function gg {
     local IFS=$'\n'
     local PS3="Select which file to open: "
