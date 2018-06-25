@@ -111,17 +111,11 @@ set statusline+=%<%P                        " datei position
 
 set titlestring=VIM\ %t
 set iconstring=VIM\ %t
-if $TERMCAP =~ "screen"
-    if $TMUX == ""
-        " set title in screen hardstatus line (see manpage)
-        set t_ts=_
-        set t_fs=\
-    else
-        set t_ts=]2;
-        set t_fs=\\
-        set notitle
-        set noicon
-    endif
+if $TMUX != ""
+    set t_ts=]2;
+    set t_fs=\\
+    set notitle
+    set noicon
 endif
 if &term =~ "tmux"
     set t_ts=
