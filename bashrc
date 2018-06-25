@@ -28,24 +28,6 @@ export PGUSER=postgres
 export PGHOST=localhost
 export PSQLRC=$HOME/.config/confrepo/psqlrc
 
-case ${TERM} in
-    xterm-256color)
-        alias screen='screen -T screen-256color'
-        ;&
-    xterm*)
-        export SCREENRC="$HOME/.config/confrepo/screenrc_xterm"
-        ;;
-    linux)
-        export SCREENRC="$HOME/.config/confrepo/screenrc_linux"
-        ;;
-    screen*)
-        if echo $TERMCAP | grep -q "screen"; then
-            PS1='\[\033[00m\]\[\033[01;34m\]\[\033k\033\\\]\w $\[\033[00m\] '
-        fi
-        PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}\033\\"';
-        ;;
-esac
-
 function gg {
     local IFS=$'\n'
     local PS3="Select which file to open: "
