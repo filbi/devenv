@@ -80,6 +80,7 @@ autocmd FileType markdown setlocal spell textwidth=68 conceallevel=2
 autocmd FileType make setlocal noexpandtab shiftwidth=8
 autocmd FileType go setlocal noexpandtab shiftwidth=4 nolist
 autocmd FileType qf nmap <buffer> <cr> <cr>:lcl<cr>
+autocmd VimEnter {} if &filetype != 'man' | execute 'CommandT' | endif
 
 "vim completion options
 set completeopt=longest,menu,preview
