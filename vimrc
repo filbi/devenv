@@ -81,7 +81,6 @@ autocmd FileType make setlocal noexpandtab shiftwidth=8
 autocmd FileType go setlocal noexpandtab shiftwidth=4 nolist
 autocmd FileType qf nmap <buffer> <cr> <cr>:lcl<cr>
 autocmd VimEnter {} if &filetype != 'man' | execute 'CommandT' | endif
-autocmd VimLeave * set t_ts= | !tmux set-window-option automatic-rename on
 
 "vim completion options
 set completeopt=longest,menu,preview
@@ -114,13 +113,6 @@ set statusline+=%<%P                        " datei position
 
 set titlestring=VIM\ %t
 set iconstring=VIM\ %t
-if &term =~ "tmux"
-    " terminfo names are tsl and fsl. The default values change
-    " the pane title instead of the window title which is not
-    " affected by the automatic rename.
-    set t_ts=k
-    set t_fs=\\
-endif
 
 augroup YCM
     autocmd!
