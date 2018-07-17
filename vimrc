@@ -59,7 +59,7 @@ noremap <silent> <leader><space> :nohlsearch<CR>
 "dont move cursor to next match when * and always search case-sensitive
 nnoremap <silent> * :let @/ = '\C\<<C-R>=expand('<cword>')<CR>\>'\| setl hls<CR>
 nnoremap <silent> # ?\C\<<C-R>=expand('<cword>')<CR>\><CR>
-nmap <leader>g :let @/='\C\<<C-R><C-W>\>' \| set hls \| silent Ggrep! -w "<cword>" \| tabedit \| copen<CR><C-W>L
+nmap <leader>g :let @/='\C\<<C-R><C-W>\>' \| set hls \| Ggrep! -q -w <cword> \| cclose \| tabedit \| copen<CR><C-W>L<C-W>\|
 
 "Split Window Options
 "map <C-J> <C-W>j<C-W>_
