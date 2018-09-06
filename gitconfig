@@ -1,5 +1,8 @@
 [core]
 	editor = vim
+	pager = delta --light --max-line-distance 0.8
+[interactive]
+	diffFilter = delta --color-only
 [merge]
 	tool = vimdiff
 	ff = false
@@ -8,9 +11,7 @@
 	tool = vimdiff
 	renames = copy
 	colorMoved = default
-[color "diff"]
-	commit = magenta
-	whitespace = red reverse
+	algorithm = histogram
 [difftool]
 	prompt = false
 [color]
