@@ -1,3 +1,4 @@
+shopt -s checkjobs
 umask 027
 set -o vi
 alias pacman='pacman --color=auto'
@@ -5,8 +6,7 @@ alias emerge='emerge --color y'
 alias ls='ls --color=always --group-directories-first'
 eval $(dircolors)
 alias grep='grep --colour=auto'
-alias info=myinfo
-myinfo() { unalias info; info --subnode $1 2>/dev/null | less; alias info=myinfo; }
+info() { /usr/bin/info --subnode $1 2>/dev/null | less; }
 alias vim="vim -o"
 alias diff="git diff --no-index --color-words"
 alias wget="wget --hsts-file=$HOME/.local/var/wget-hsts"
@@ -16,7 +16,8 @@ export INPUTRC="$HOME/.config/confrepo/inputrc"
 export EDITOR=/usr/bin/vim
 export MANROFFOPT="-c"
 export MANPAGER="bash -c \"vim -R +'set ft=man ts=8 nomod nolist nonu noma' +'map q ZZ'</dev/tty <(col -b)\""
-PATH="$PATH:$HOME/go/bin"
+PATH="$PATH:$HOME/.cargo/bin:$HOME/bin"
+CDPATH=".:$HOME:$HOME/src"
 HISTCONTROL=ignoreboth:erasedups
 HISTSIZE=100000
 HISTFILE="$HOME/.local/var/bash_history"
