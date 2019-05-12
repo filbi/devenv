@@ -12,3 +12,4 @@ set editing-mode vi
 set keymap vi-insert
 "kj": vi-movement-mode
 "\e[Z": complete
+"\C-e": forward-search-history
