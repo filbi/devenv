@@ -33,8 +33,7 @@ set textwidth=80
 set cinoptions+=g0,N-s,t0,(0,u0,Ws,k2s
 set formatoptions+=jro
 set cursorline
-" only highlight line number
-highlight! link CursorLine Normal
+set cursorlineopt=number
 "set relativenumber
 "set diffopt=horizontal
 
