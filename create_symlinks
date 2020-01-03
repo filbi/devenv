@@ -8,6 +8,8 @@ mkdir -p ~/.ssh/
 
 declare -A DOT_FILES=(
     ["$HOME/.vim/vimrc"]=vimrc
+    ["$HOME/.profile"]=profile
+    ["$HOME/.bash_profile"]=bashrc
     ["$HOME/.bashrc"]=bashrc
     ["$HOME/.tmux.conf"]=tmux.conf
     ["$HOME/.config/git/config"]=gitconfig
