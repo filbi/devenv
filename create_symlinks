@@ -8,7 +8,6 @@ mkdir -p ~/.vim/
 declare -A DOT_FILES=(
     ["$HOME/.vim/vimrc"]=vimrc
     ["$HOME/.bashrc"]=bashrc
-    ["$HOME/.Xresources"]=Xresources
     ["$HOME/.tmux.conf"]=tmux.conf
     ["$HOME/.config/git/config"]=gitconfig
     ["$HOME/.config/procps/toprc"]=toprc
