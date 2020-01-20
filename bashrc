@@ -27,6 +27,7 @@ shopt -s histappend
 export LESS='-R -M -x1,5 --shift 10 --silent'
 export LESSHISTFILE="$HOME/.local/var/less_history"
 export LC_TIME="de_CH.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
 
 export NODE_REPL_HISTORY="$HOME/.local/var/node_history"
 export SQLITE_HISTORY="$HOME/.local/var/sqlite_history"
