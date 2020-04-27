@@ -10,6 +10,8 @@ set keyseq-timeout 200
 
 set editing-mode vi
 set keymap vi-insert
+set vi-cmd-mode-string "‼"
+set vi-ins-mode-string ""
 "kj": vi-movement-mode
 "\e[Z": complete
 "\C-e": forward-search-history
