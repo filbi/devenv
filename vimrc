@@ -37,6 +37,7 @@ set cinoptions+=g0,N-s,t0,(0,u0,Ws,k2s
 set formatoptions+=jro
 set cursorline
 set cursorlineopt=number
+set diffopt+=internal,algorithm:patience
 "set relativenumber
 "set diffopt=horizontal
 set viminfofile=$HOME/.local/var/viminfo
