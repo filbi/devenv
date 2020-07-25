@@ -13,6 +13,7 @@ declare -A DOT_FILES=(
     ["$HOME/.config/git/config"]=gitconfig
     ["$HOME/.config/procps/toprc"]=toprc
     ["$HOME/.gdbinit"]=gdbinit
+    ["$HOME/.sqliterc"]=sqliterc
 )
 RC_REPO=$PWD
 for path in "${!DOT_FILES[@]}"; do
