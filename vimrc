@@ -2,6 +2,7 @@ set nocompatible
 set modelines=0
 syntax on
 colorscheme fgv
+set redrawtime=4000
 let &t_8f = "[38;2;%lu;%lu;%lum"
 let &t_8b = "[48;2;%lu;%lu;%lum"
 set termguicolors
@@ -65,6 +66,10 @@ noremap <silent> <leader><space> :nohlsearch<CR>
 nnoremap <silent> * :let @/ = '\C\<<C-R>=expand('<cword>')<CR>\>'\| setl hls<CR>
 nnoremap <silent> # ?\C\<<C-R>=expand('<cword>')<CR>\><CR>
 nmap <leader>g :let @/='\C\<<C-R><C-W>\>' \| set hls \| Ggrep! -q -w <cword> \| cclose \| tabedit \| copen<CR><C-W>L<C-W>\|
+
+nnoremap <Leader><Leader> <C-^>
+nnoremap <Leader>o :only<CR>
+nnoremap <silent> <LocalLeader>s :syntax sync fromstart<CR>
 
 "Split Window Options
 "map <C-J> <C-W>j<C-W>_
