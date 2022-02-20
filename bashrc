@@ -39,7 +39,8 @@ function gg {
     select l in $(git grep --color=always -n $@); do
         [ -z "$l" ] && continue
         vim "+let @/ = '\C$@'" "+setlocal hlsearch" $(
-            awk -F$'\x1b' '{gsub("\\[m", "+", $3); print $3; print $1}' <<< $l)
+            awk -F$'\x1b' '{gsub("\\[32m", "+", $6); gsub("\\[35m", "", $2); print $6; print $2}' <<<$l
+        )
         break
     done
 }
