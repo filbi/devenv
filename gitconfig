@@ -7,10 +7,10 @@
 	tool = vimdiff
 	ff = false
 [diff]
-	wordRegex = .
 	tool = vimdiff
 	renames = copy
 	colorMoved = default
+	colorMovedWS = allow-indentation-change
 	algorithm = histogram
 [difftool]
 	prompt = false
