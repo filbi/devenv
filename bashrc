@@ -14,8 +14,7 @@ prompt=$([ $UID -eq 0 ] && echo ↯ || echo ▶)
 PS1="\[\033[00m\]\[\033[01;34m\]\w \[\033[01;31m\]$prompt\[\033[00m\] "
 export INPUTRC="$HOME/.config/confrepo/inputrc"
 export EDITOR=/usr/bin/vim
-export MANROFFOPT="-c"
-export MANPAGER="bash -c \"vim -R +'set ft=man ts=8 nomod nolist nonu noma' +'map q ZZ'</dev/tty <(col -b)\""
+export MANPAGER="vim --not-a-term -R +'set ts=8 nolist' +MANPAGER +'map q ZZ' -"
 PATH="$PATH:$HOME/.cargo/bin:$HOME/bin"
 CDPATH=".:$HOME:$HOME/src"
 HISTCONTROL=ignoreboth:erasedups
