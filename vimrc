@@ -152,14 +152,16 @@ let g:ycm_global_ycm_extra_conf = '~/.config/confrepo/ycm_extra_conf.py'
 let g:ale_echo_msg_format = '[%linter%] %s'
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
-let g:ale_linters = {'rust': []}
+let g:ale_linters = {'rust': [], 'typescript': ['rome']}
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
     \'bash': ['shfmt'],
     \'go': ['goimports'],
     \'html': ['prettier'],
-    \'javascript': ['prettier'],
-    \'json': ['jq'],
+    \'javascript': ['rome'],
+    \'typescript': ['rome'],
+    \'typescriptreact': ['rome'],
+    \'json': ['rome'],
     \'markdown': ['prettier'],
     \'python': ['black'],
     \'sh': ['shfmt'],
@@ -175,3 +177,45 @@ let g:ale_sh_shfmt_options = '--indent 4'
 "let &t_SI = "\<Esc>]12;purple\x7"
 "let &t_EI = "\<Esc>]12;blue\x7"
 "endif
+
+call ale#Set('javascript_rome_executable', 'rome')
+call ale#Set('javascript_rome_use_global', get(g:, 'ale_use_global_executables', 0))
+call ale#Set('javascript_rome_options', '')
+
+function! RomeExecutable(buffer) abort
+  return ale#path#FindExecutable(a:buffer, 'javascript_rome', [
+  \   'node_modules/@rometools/cli-linux-x64/rome',
+  \   'node_modules/@rometools/cli-linux-arm64/rome',
+  \   'node_modules/@rometools/cli-win32-x64/rome.exe',
+  \   'node_modules/@rometools/cli-win32-arm64/rome.exe',
+  \   'node_modules/@rometools/cli-darwin-x64/rome',
+  \   'node_modules/@rometools/cli-darwin-arm64/rome',
+  \   'node_modules/.bin/rome',
+  \])
+endfunction
+function! RomeFormat(buffer) abort
+  let l:executable = RomeExecutable(a:buffer)
+  let l:options = ale#Var(a:buffer, 'javascript_rome_options')
+  return {
+  \   'command': ale#Escape(l:executable)
+  \       . ' format'
+  \       . (!empty(l:options) ? ' ' . l:options : '')
+  \       . ' --stdin-file-path=%s',
+  \}
+endfunction
+
+execute ale#fix#registry#Add('rome', 'RomeFormat', ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json'], 'rome for javascript')
+
+function! GetRomeProjectRoot(buffer) abort
+    let l:rome_file = ale#path#FindNearestFile(a:buffer, 'rome.json')
+
+    return !empty(l:rome_file) ? fnamemodify(l:rome_file, ':h') : ''
+endfunction
+
+call ale#linter#Define('typescript', {
+\   'name': 'rome',
+\   'lsp': 'stdio',
+\   'executable': function('RomeExecutable'),
+\   'command': '%e lsp-proxy',
+\   'project_root': function('GetRomeProjectRoot'),
+\})
