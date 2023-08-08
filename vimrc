@@ -182,7 +182,7 @@ call ale#Set('javascript_rome_executable', 'rome')
 call ale#Set('javascript_rome_use_global', get(g:, 'ale_use_global_executables', 0))
 call ale#Set('javascript_rome_options', '')
 
-function! ale#handlers#rome#GetExecutable(buffer) abort
+function! RomeExecutable(buffer) abort
   return ale#path#FindExecutable(a:buffer, 'javascript_rome', [
   \   'node_modules/@rometools/cli-linux-x64/rome',
   \   'node_modules/@rometools/cli-linux-arm64/rome',
@@ -194,7 +194,7 @@ function! ale#handlers#rome#GetExecutable(buffer) abort
   \])
 endfunction
 function! RomeFormat(buffer) abort
-  let l:executable = ale#handlers#rome#GetExecutable(a:buffer)
+  let l:executable = RomeExecutable(a:buffer)
   let l:options = ale#Var(a:buffer, 'javascript_rome_options')
   return {
   \   'command': ale#Escape(l:executable)
@@ -206,15 +206,16 @@ endfunction
 
 execute ale#fix#registry#Add('rome', 'RomeFormat', ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json'], 'rome for javascript')
 
-function! ale#handlers#rome#GetProjectRoot(buffer) abort
+function! GetRomeProjectRoot(buffer) abort
     let l:rome_file = ale#path#FindNearestFile(a:buffer, 'rome.json')
+
     return !empty(l:rome_file) ? fnamemodify(l:rome_file, ':h') : ''
 endfunction
 
 call ale#linter#Define('typescript', {
 \   'name': 'rome',
 \   'lsp': 'stdio',
-\   'executable': function('ale#handlers#rome#GetExecutable'),
+\   'executable': function('RomeExecutable'),
 \   'command': '%e lsp-proxy',
-\   'project_root': function('ale#handlers#rome#GetProjectRoot'),
+\   'project_root': function('GetRomeProjectRoot'),
 \})
