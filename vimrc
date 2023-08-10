@@ -2,7 +2,6 @@ set nocompatible
 set modelines=0
 syntax on
 colorscheme fgv
-set redrawtime=4000
 let &t_8f = "[38;2;%lu;%lu;%lum"
 let &t_8b = "[48;2;%lu;%lu;%lum"
 set termguicolors
