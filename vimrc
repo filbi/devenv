@@ -184,13 +184,13 @@ call ale#Set('javascript_rome_options', '')
 
 function! RomeExecutable(buffer) abort
   return ale#path#FindExecutable(a:buffer, 'javascript_rome', [
-  \   'node_modules/@rometools/cli-linux-x64/rome',
-  \   'node_modules/@rometools/cli-linux-arm64/rome',
-  \   'node_modules/@rometools/cli-win32-x64/rome.exe',
-  \   'node_modules/@rometools/cli-win32-arm64/rome.exe',
-  \   'node_modules/@rometools/cli-darwin-x64/rome',
-  \   'node_modules/@rometools/cli-darwin-arm64/rome',
-  \   'node_modules/.bin/rome',
+  \   'node_modules/@biomejs/cli-linux-x64/biome',
+  \   'node_modules/@biomejs/cli-linux-arm64/biome',
+  \   'node_modules/@biomejs/cli-win32-x64/biome.exe',
+  \   'node_modules/@biomejs/cli-win32-arm64/biome.exe',
+  \   'node_modules/@biomejs/cli-darwin-x64/biome',
+  \   'node_modules/@biomejs/cli-darwin-arm64/biome',
+  \   'node_modules/.bin/biome',
   \])
 endfunction
 function! RomeFormat(buffer) abort
@@ -207,7 +207,7 @@ endfunction
 execute ale#fix#registry#Add('rome', 'RomeFormat', ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json'], 'rome for javascript')
 
 function! GetRomeProjectRoot(buffer) abort
-    let l:rome_file = ale#path#FindNearestFile(a:buffer, 'rome.json')
+    let l:rome_file = ale#path#FindNearestFile(a:buffer, 'biome.json')
 
     return !empty(l:rome_file) ? fnamemodify(l:rome_file, ':h') : ''
 endfunction
